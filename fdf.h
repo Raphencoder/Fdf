@@ -6,7 +6,7 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 16:10:34 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/01 16:13:58 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/01 17:07:38 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 
 typedef struct	t_check
 {
-	int 		col;
-	int 		fcol;
 	int 		nb;
 	int			nbl;
 	int 		space;

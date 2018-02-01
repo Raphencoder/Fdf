@@ -6,7 +6,7 @@
 #    By: rkrief  <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 09:33:30 by alecott           #+#    #+#              #
-#    Updated: 2018/02/01 16:15:27 by rkrief           ###   ########.fr        #
+#    Updated: 2018/02/01 17:18:16 by rkrief           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIB = $(addprefix $(LIB_PATH), $(LIB_NAME))
 
 NAME = fdf
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 
 INC = fdf.h
 

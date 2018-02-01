@@ -6,11 +6,12 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 13:08:09 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/01 15:53:59 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/01 17:15:25 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
+#include <stdio.h>
 
 int ft_isnumb(char *str)
 {
@@ -31,7 +32,7 @@ void	ft_move(s_check *numb, char *str, int *i)
 	if (str[*i] == '-')
 		i++;
 	if (!ft_isdigit(str[*i]))
-		numb->col = -10;
+		numb->nb = -100;
 	while (ft_isdigit(str[*i]))
 		*i = *i + 1;
 	*i= *i - 1;
@@ -53,17 +54,14 @@ int		ft_samecol(char *str, s_check *numb)
 			if (str[i] == ' ')
 				numb->space++;
 			i++;
-			numb->col++;
 		}
-		if (numb->fcol && (numb->fcol != numb->col))
-			break;
-		numb->fcol = numb->col;
-		numb->col = 0;
+		if (numb->nbl && numb->nbl != numb->nb)
+			return (1);
+		numb->nbl = numb->nb;
+		numb->nb = 0;
 		i++;
 		numb->fline++;
 	}
-	if (numb->col && (numb->fcol != numb->col))
-		return (1);
 	return (0);
 }
 

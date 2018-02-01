@@ -6,7 +6,7 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 15:58:56 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/01 15:41:44 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/01 16:53:29 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int main(int argc, char **argv)
 	char	*str;
 	s_check	numb;
 
+	ft_bzero(&numb, sizeof(s_check));
 	if (argc != 2)
 	{
 		ft_putendl("errror");

@@ -6,7 +6,7 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 11:45:04 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/01 16:15:59 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/01 18:34:43 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,9 @@ void    ft_all(char *str, s_check *numb)
 {
 	int **tab;
 
-	if (!ft_checkgrid(str, numb))
+	if (ft_checkgrid(str, numb))
 	{
-		ft_putendl("Error with the map");
-		return ;
-	}
-	numb->nbl = ft_countnb(str);
-	if (numb->nbl * numb->fline != numb->nb)
-	{
-		ft_putendl("Error with the map");
+		ft_putendl("iError with the map");
 		return ;
 	}
 	tab = ft_parsing(str, numb);
@@ -66,4 +60,5 @@ void    ft_all(char *str, s_check *numb)
 		j = 0;
 		i++;
 	}
+	return ;
 }
