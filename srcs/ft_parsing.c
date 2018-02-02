@@ -6,7 +6,7 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 13:50:54 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/01 18:52:08 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/02 11:08:02 by Raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,10 @@ int		**ft_parsing(char *str, s_check *numb)
 	i = 0;
 	l = 0;
 	j = 0;
-	ft_putnbr(numb->nb);
 	tab = (int**)malloc(sizeof(int*) * (numb->line + 1));
 	while (str[i])
 	{
-		tab[j] = (int*)malloc(sizeof(int) * (numb->nb));
+		tab[j] = (int*)malloc(sizeof(int) * (numb->nbl));
 		while(str[i] && str[i] != '\n')
 		{
 			if (ft_isdigit(str[i]) || str[i] == '-')

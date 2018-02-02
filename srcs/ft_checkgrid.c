@@ -6,7 +6,7 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 13:08:09 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/01 17:15:25 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/02 12:07:00 by Raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int ft_isnumb(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] != '\n' || str[i] != ' ' || (!ft_isdigit(str[i])))
+		if (str[i] != '\n' && str[i] != ' ' && str[i] != '-' && (!ft_isdigit(str[i])))
 			return (1);
 		i++;
 	}
@@ -30,12 +30,12 @@ int ft_isnumb(char *str)
 void	ft_move(s_check *numb, char *str, int *i)
 {
 	if (str[*i] == '-')
-		i++;
+		*i = *i + 1;
 	if (!ft_isdigit(str[*i]))
 		numb->nb = -100;
 	while (ft_isdigit(str[*i]))
 		*i = *i + 1;
-	*i= *i - 1;
+	*i = *i - 1;
 	numb->nb++;
 	return ;
 }
@@ -55,7 +55,7 @@ int		ft_samecol(char *str, s_check *numb)
 				numb->space++;
 			i++;
 		}
-		if (numb->nbl && numb->nbl != numb->nb)
+		if ((numb->nbl && numb->nbl != numb->nb))
 			return (1);
 		numb->nbl = numb->nb;
 		numb->nb = 0;
@@ -71,7 +71,7 @@ int		ft_checkgrid(char *str, s_check *numb)
 
 	error = 0;
 	error = ft_isnumb(str);
-	error = ft_samecol(str, numb);
-	error = numb->line - numb->fline;
+	error = error + ft_samecol(str, numb);
+	error = error + numb->line - numb->fline;
 	return (error);
 }

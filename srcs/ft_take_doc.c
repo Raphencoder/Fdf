@@ -6,7 +6,7 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 11:36:07 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/01 18:39:15 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/02 11:11:13 by Raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ char	*ft_take_doc(int fd, int *line)
 			str = ft_strdup(buf);
 		else
 			str = ft_strjoin(tmp, buf);
-//		ft_strdel(&tmp);
+		ft_strdel(&tmp);
 		tmp = str;
 		str = ft_strjoin(tmp, "\n");
-//		ft_strdel(&tmp);
+		ft_strdel(&tmp);
 		*line = *line + 1;
 	}
 	res = ft_strdup(str);
-//	ft_strdel(&str);
+	ft_strdel(&str);
 	return (res);
 }
