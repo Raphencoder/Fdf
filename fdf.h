@@ -6,7 +6,7 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 16:10:34 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/01 17:07:38 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/02 11:25:14 by Raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct	t_check
 	int 		nb;
 	int			nbl;
 	int 		space;
+	int			lspace;
 	int 		line;
 	int			fline;
 }				s_check;
