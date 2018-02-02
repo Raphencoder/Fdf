@@ -6,7 +6,7 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 11:45:04 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/02 11:08:42 by Raphael          ###   ########.fr       */
+/*   Updated: 2018/02/02 12:33:22 by Raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,18 @@ void    ft_all(char *str, s_check *numb)
 
 	i = 0;
 	j = 0;
-	while(i < 11)
+	while(i < numb->line)
 	{
-		while(j < 19)
+		while(j < numb->nbl)
 		{
 			ft_putnbr(tab[i][j]);
-			if (tab[i][j] == 10)
-				ft_putchar(' ');
-			else
+			if (tab[i][j] >= 0 && tab[i][j] <= 9)
 			{
 				ft_putchar(' ');
 				ft_putchar(' ');
 			}
+			else
+				ft_putchar(' ');
 			j++;
 		}
 		ft_putchar('\n');
