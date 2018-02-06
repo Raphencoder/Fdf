@@ -6,7 +6,7 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 11:45:04 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/02 12:33:22 by Raphael          ###   ########.fr       */
+/*   Updated: 2018/02/05 13:33:38 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void    ft_all(char *str, s_check *numb)
 		return ;
 	}
 	tab = ft_parsing(str, numb);
+	ft_graph(tab, numb);
 	int i;
 	int j;
 

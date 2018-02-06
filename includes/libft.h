@@ -6,7 +6,7 @@
 /*   By: Raphael <raphaelkriefbm@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 12:49:10 by Raphael           #+#    #+#             */
-/*   Updated: 2018/01/29 18:13:08 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/06 13:46:12 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct		s_fd_tracker
 void				ft_putchar(char c);
 int					ft_putwchar(wchar_t wc);
 int					get_next_line(int const fd, char **line);
+void				ft_swap(int *a, int *b);
 void				ft_strclr(char *s);
 void				ft_strdel(char **as);
 void				ft_memdel(void **ap);

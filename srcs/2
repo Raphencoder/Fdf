@@ -1,0 +1,49 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_graph.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/02/05 13:33:49 by rkrief            #+#    #+#             */
+/*   Updated: 2018/02/05 16:30:24 by rkrief           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../fdf.h"
+
+int	ft_graph(int **tab, s_check *numb)
+{
+	void	*mlx_ptr;
+	int		i;
+	int		j;
+	int		x;
+	int		y;
+	void	*win_ptr;
+
+	i = 0;
+	y = 250;
+	x = 250;
+	j = 0;
+	ft_putendl("hello");
+	mlx_ptr = mlx_init();
+	win_ptr = mlx_new_window(mlx_ptr, 500, 500, "fdf");
+	ft_putendl("there");
+	while (tab[i])
+	{
+		while (tab[i][j])
+		{
+			ft_putendl("hey");
+			mlx_pixel_put(mlx_ptr, win_ptr, x, y, 0xFFFFFF);
+			x += 10;
+			y += 2;
+			j++;
+		}
+		j = 0;
+		i++;
+		x = 250;
+		y += 10;
+	}
+	mlx_loop(mlx_ptr);
+	return (0);
+}
