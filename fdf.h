@@ -6,7 +6,7 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 16:10:34 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/05 18:32:03 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/12 18:26:38 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,30 @@ typedef struct	t_check
 	int			oldx;
 	int			oldy;
 }				s_check;
+
+typedef struct	t_pos
+{
+	int			x;
+	int			y;
+	int			oldx;
+	int			oldy;
+	void		*win_ptr;
+	void		*mlx_ptr;
+}				s_pos;
+
+typedef struct 	t_new
+{
+	int			x;
+	int			y;
+	int			z;
+}				s_new;
+
+typedef struct t_cam
+{
+	int			x;
+	int			y;
+	int			z;
+}				s_cam;
 
 int		**ft_parsing(char *str, s_check *numb);
 int		ft_checkgrid(char *str, s_check *numb);

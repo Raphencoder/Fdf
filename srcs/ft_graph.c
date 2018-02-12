@@ -6,7 +6,7 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 13:33:49 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/06 22:08:01 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/12 20:30:55 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void        fill_pixel(int x, int y, s_check *numb, char *img_str)
 {
 	int i;
-	
-	i = (x * 4) + (y * numb->nbl);
-	if (x < (numb->nbl / 4) && y < (numb->nbl / 4) && x > 0 && y > 0)
+
+	i = (x * 4) + (y * 4 * numpos->nbl);
+	if (x < (numpos->nbl / 4) && y < (numpos->nbl / 4) && x > 0 && y > 0)
 	{
 		img_str[i + 2] = 0;
 		img_str[i + 1] = 0;
@@ -25,158 +25,65 @@ void        fill_pixel(int x, int y, s_check *numb, char *img_str)
 	}
 }
 
-void	ft_bresenham(int x1, int y1, int x2, int y2, s_check *numb, char *img_str, void *mlx_ptr, void *win_ptr)
+int	ft_doanimg(int **tab, s_check *numb, s_pos *pos)
 {
-	int x;
-	int y;
-
-	(void)numb;
-	(void)img_str;
-	x = x1 - x2;
-	y = y1 - y2;
-	x = ABS(x);
-	y = ABS(y);
-	if (x > y)
-	{
-		if (x1 > x2)
-		{
-			ft_swap(&x1, &x2);
-			ft_swap(&y1, &y2);
-		}
-		x = x1;
-		while (x < x2)
-		{
-			y = y1 + ((y2 - y1) * (x - x1)) / (x2 - x1);
-//			fill_pixel(x, y, numb, img_str);
-			mlx_pixel_put(mlx_ptr, win_ptr, x, y, 0XFFFFFF);
-			x++;
-		}
-	}
-	else
-	{
-		if (y1 >= y2)
-		{
-			ft_swap(&x1, &x2);
-			ft_swap(&y1, &y2);
-		}
-		x = x1;
-		while (x < x2)
-		{
-			y = y1 + ((y2 - y1) * (x - x1)) / (x2 - x1);
-	//		fill_pixel(x, y, numb, img_str);
-			mlx_pixel_put(mlx_ptr, win_ptr, x, y, 0XFFFFFF);
-			x++;
-		}
-	}
-}
-
-
-int ft_algo2(s_check *numb, char *img_str, int **tab, void *mlx_ptr, void *win_ptr)
-{
-	int	h;
-	int	x;
-	int y;
-	int i;
-	int j;
-
-	x = 500;
-	y = 500;
-	i = 0;
-	j = 0;
-	while (j < numb->nbl)
-	{
-		while (i < numb->line)
-		{
-			clonex = x;
-			h = tab[i][j];
-			if (numb->oldy)
-				y = numb->oldy + 10;
-			else
-				y = y + 10;
-			if (numb->oldy)
-				ft_bresenham(x, y, numb->oldx, numb->oldy, numb, img_str, mlx_ptr, win_ptr);
-			numb->oldx = x;
-			numb->oldy = y;
-			i++;
-		}
-		i = 0;
-		j++;
-		y = 500;
-		x = clonex + 20;
-		numb->oldx = 0;
-		numb->oldy = 0;
-	}
-	return (0);
-}
-
-int	ft_algo(s_check *numb, char *img_str, int **tab, void *mlx_ptr, void *win_ptr)
-{
-	int	h;
-	int	x;
-	int y;
-	int i;
-	int j;
-	int	flag;
-	int	cloney;
-	int clonex;
-
-	x = 850;
-	y = 850;
-	i = 0;
-	j = 0;
-	flag = 0;
-	while (i < numb->line)
-	{
-		cloney = y;
-		clonex = x;
-		while (j < numb->nbl)
-		{
-			h = tab[i][j];
-			if (numb->oldx)
-				x = numb->oldx + 20;
-			else
-				x = x + 20;
-			if (numb->oldy)
-				ft_bresenham(x, y + h, numb->oldx, numb->oldy, numb, img_str, mlx_ptr, win_ptr);
-			numb->oldx = x;
-			numb->oldy = y + h;
-			j++;
-		}
-		j = 0;
-		i++;
-		x = 850;
-		y = cloney + 20;
-		numb->oldy = 0;
-		numb->oldx = 0;
-	}
-	return (0);
-}
-
-int	ft_doanimg(int **tab, s_check *numb, void *mlx_ptr, void *win_ptr)
-{
-//	void	*ptr_img;
+	//	void	*ptr_img;
 	char	*img_str;
-//	int		s_l;
-//	int		bpp;
-//	int		endian;
+
+	//	int		s_l;
+	//	int		bpp;
+	//	int		endian;
 
 	img_str = 0;
-//	ptr_img = mlx_new_image(mlx_ptr, numb->nbl, numb->line);
-//	img_str = mlx_get_data_addr(mlx_ptr, &(bpp), &(s_l), &(endian));
-	ft_algo(numb, img_str, tab, mlx_ptr, win_ptr);
-	ft_algo2(numb, img_str, tab, mlx_ptr, win_ptr);
-//	mlx_put_image_to_window(mlx_ptr, win_ptr, ptr_img, 0, 0);
+	// 	ptr_img = mlx_new_image(mlx_ptr, numpos->nbl, numpos->line);
+	//	img_str = mlx_get_data_addr(mlx_ptr, &(bpp), &(s_l), &(endian));
+	//	mlx_put_image_to_window(mlx_ptr, win_ptr, ptr_img, 0, 0);
 	return (0);
 }	
 
+s_new	ft_convert(int x, int y, int z, s_cam *cam)
+{
+	s_new new;
+
+	new.x = cam->x - x;
+	new.y = cam->y - y;
+	if (!z)
+		return (new);
+	new.z = cam->z - z;
+	new.x = new.x * (-(cam->z) / z);
+	new.y = new.y * (-(cam->z) / z);
+	new.x = new.x + cam->x;
+	new.y = new.y + cam->y;
+	new.z = 0;
+	return (new):
+}
+
 int	ft_graph(int **tab, s_check *numb)
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
+	s_pos	pos;
+	s_cam	cam;
+	s_new	cord;
+	s_new	tmp;
+	int		i;
+	int		j;
 
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 1500, 1500, "fdf");
-	ft_doanimg(tab, numb, mlx_ptr, win_ptr);
-	mlx_loop(mlx_ptr);
+	pos.mlx_ptr = mlx_init();
+	pos.win_ptr = mlx_new_window(pos.mlx_ptr, 3000, 2000, "fdf");
+	while (i < numb->line)
+	{
+		while (j < numb->nbl)
+		{	
+			cord = ft_convert(j, i, tab[i][j], &cam);
+			if (j > 0)
+				ft_put_line(cord, ft_convert(j - 1, i, tab[i][j - 1], &cam));
+			if (i > 0)
+				ft_put_line(cord, ft_convert(j, i - 1, tab[i - 1][j], &cam));
+				
+			tmp = cord;
+			j++;
+		}
+	}
+	ft_doanimg(tab, numb, &pos);
+	mlx_loop(pos.mlx_ptr);
 	return (0);
 }
