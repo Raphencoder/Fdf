@@ -6,7 +6,7 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 13:08:09 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/02 12:07:00 by Raphael          ###   ########.fr       */
+/*   Updated: 2018/02/19 18:05:59 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_move(s_check *numb, char *str, int *i)
 	return ;
 }
 
-int		ft_samecol(char *str, s_check *numb)
+int		ft_samecol(char *str, s_check *numb, s_pos *pos)
 {
 	int i;
 
@@ -62,16 +62,20 @@ int		ft_samecol(char *str, s_check *numb)
 		i++;
 		numb->fline++;
 	}
+	pos->nb = numb->nbl;
 	return (0);
 }
 
-int		ft_checkgrid(char *str, s_check *numb)
+int		ft_checkgrid(char *str, s_check *numb, s_pos *pos)
 {
 	int error;
 
 	error = 0;
 	error = ft_isnumb(str);
-	error = error + ft_samecol(str, numb);
-	error = error + numb->line - numb->fline;
+	ft_putnbr(error);
+	error = error + ft_samecol(str, numb, pos);
+	ft_putnbr(error);
+	error = error + pos->line - numb->fline;
+	ft_putnbr(error);
 	return (error);
 }

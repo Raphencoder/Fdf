@@ -6,7 +6,7 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 13:50:54 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/02 11:08:02 by Raphael          ###   ########.fr       */
+/*   Updated: 2018/02/19 17:44:48 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_movedigit(char *str, int *i)
 	*i = *i - 1;
 }
 
-int		**ft_parsing(char *str, s_check *numb)
+int		**ft_parsing(char *str, s_pos *pos)
 {
 	int **tab;
 	int i;
@@ -29,10 +29,10 @@ int		**ft_parsing(char *str, s_check *numb)
 	i = 0;
 	l = 0;
 	j = 0;
-	tab = (int**)malloc(sizeof(int*) * (numb->line + 1));
+	tab = (int**)malloc(sizeof(int*) * (pos->line + 1));
 	while (str[i])
 	{
-		tab[j] = (int*)malloc(sizeof(int) * (numb->nbl));
+		tab[j] = (int*)malloc(sizeof(int) * (pos->nb));
 		while(str[i] && str[i] != '\n')
 		{
 			if (ft_isdigit(str[i]) || str[i] == '-')

@@ -6,7 +6,7 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 16:10:34 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/15 14:20:39 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/19 20:42:10 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,22 @@ typedef struct	t_check
 typedef struct	t_pos
 {
 	int			x;
+	float		h;
+	int			movex;
+	int			movey;
+	float		rotatex;
+	float		rotatey;
 	int			y;
+	int			line;
+	int			nb;
 	int			oldx;
 	int			oldy;
+	int			**tab;
 	void		*win_ptr;
 	void		*mlx_ptr;
+	void		*ptr_img;
+	char		*img_str;
+	int			s_l;
 }				s_pos;
 
 typedef struct 	t_new
@@ -55,9 +66,18 @@ typedef struct t_cam
 	float		z;
 }				s_cam;
 
-int		**ft_parsing(char *str, s_check *numb);
-int		ft_checkgrid(char *str, s_check *numb);
-void	ft_all(char *str, s_check *numb);
+typedef struct t_bonus
+{
+	float		x;
+	float		y;
+	float		z;
+	float		color;
+}				s_bonus;
+
+int		**ft_parsing(char *str, s_pos *pos);
+int		key_hook(int kc, s_pos *pos);
+int		ft_checkgrid(char *str, s_check *numb, s_pos *pos);
+void	ft_all(char *str, s_check *numb, s_pos *pos);
 char	*ft_take_doc(int fd, int *line);
-int		ft_graph(int **tab, s_check *numb);
+int		ft_graph(s_pos *pos);
 #endif
