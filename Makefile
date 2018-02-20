@@ -6,7 +6,7 @@
 #    By: rkrief  <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 09:33:30 by alecott           #+#    #+#              #
-#    Updated: 2018/02/19 14:15:26 by rkrief           ###   ########.fr        #
+#    Updated: 2018/02/20 11:15:22 by Raphael          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ INC = fdf.h
 
 SRCS_PATH = ./srcs
 
-ALL_SRCS = 	main.c key_hook.c ft_checkgrid.c ft_take_doc.c ft_parsing.c ft_all.c ft_graph.c
+ALL_SRCS = 	main.c key_hook.c ft_get_coef.c ft_checkgrid.c ft_take_doc.c ft_parsing.c ft_all.c ft_graph.c
 
 SRCS = $(addprefix $(SRCS_PATH)/, $(ALL_SRCS))
 

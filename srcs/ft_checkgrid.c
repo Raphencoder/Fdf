@@ -51,8 +51,6 @@ int		ft_samecol(char *str, s_check *numb, s_pos *pos)
 		{
 			if (ft_isdigit(str[i]) || str[i] == '-')
 				ft_move(numb, str, &i);
-			if (str[i] == ' ')
-				numb->space++;
 			i++;
 		}
 		if ((numb->nbl && numb->nbl != numb->nb))
