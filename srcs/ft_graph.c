@@ -6,7 +6,7 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 13:33:49 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/19 19:26:07 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/20 14:38:40 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,44 +32,12 @@ s_new	ft_convert(int x, int y, int z, s_pos *pos)
 
 	x *= pos->rotatex;
 	y *= pos->rotatey;
-	new.x = x + pos->movex + (8 * (z * pos->h));
-	new.y = y + pos->movey - (5 * (z * pos->h));
+	new.x = x + pos->movex + (z * pos->h);
+	new.y = y + pos->movey - (z * pos->h);
 	new.z = 0;
 	new.x = (int)new.x;
 	new.y = (int)new.y;
 	return (new);
-}
-
-void	ft_get_coef(s_new corda, s_new cordb, float *coefx, float *coefy)
-{
-	int x;
-	int y;
-
-	x = ABS ((corda.x - cordb.x));
-	y = ABS ((corda.y - cordb.y));
-	if (x == 0)
-	{
-		*coefx = 0;
-		*coefy = 1;
-	}
-	else if (y == 0)
-	{
-		*coefy = 0;
-		*coefx = 1;
-	}
-	else
-	{
-		*coefx = (float)x / (float)y;
-		*coefy = (float)y / (float)x;
-	}
-	if (*coefx >= 1)
-		*coefx = 1;
-	else
-		*coefy = 1;
-	if (cordb.x - corda.x < 0)
-		*coefx = -(*coefx);
-	if (cordb.y - corda.y < 0)
-		*coefy = -(*coefy);
 }
 
 void	ft_put_line(s_new corda, s_new cordb, s_pos *pos)

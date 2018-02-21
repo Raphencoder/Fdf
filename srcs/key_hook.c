@@ -6,7 +6,7 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 14:10:46 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/19 20:13:35 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/20 14:49:04 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,28 @@ int		key_hook(int kc, s_pos *pos)
 	static int state = 1;
 	printf("%d\n", kc);
 	if (kc == 123)
-		pos->movex -= 10;
+		pos->movex -= 20;
 	if (kc == 124)
-		pos->movex += 10;
+		pos->movex += 20;
 	if (kc == 126)
 		pos->movey -= 10;
 	if (kc == 125)
 		pos->movey += 10;
 	if (kc == 69)
-		pos->h = pos->h + 0.1;
+		pos->h = pos->h * 1.1;
 	if (kc == 78)
-		pos->h = pos->h - 0.1;
+		pos->h = pos->h / 1.1;
 	if (kc == 121)
 	{
-		pos->rotatex -= 5;
-		pos->rotatey -= 5;
+		pos->rotatex /= 1.1;
+		pos->rotatey /= 1.1;
+		pos->h = pos->h / 1.1;
 	}
 	if (kc == 116)
 	{
-		pos->rotatex += 5.1;
-		pos->rotatey += 5.1;
+		pos->rotatex *= 1.1;
+		pos->rotatey *= 1.1;
+		pos->h = pos->h * 1.1;
 	}
 	if (kc == 0)
 	{
