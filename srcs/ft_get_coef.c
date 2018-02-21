@@ -6,7 +6,7 @@
 /*   By: Raphael <raphaelkriefbm@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 11:10:42 by Raphael           #+#    #+#             */
-/*   Updated: 2018/02/21 19:17:27 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/21 22:07:09 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ void	change_coef(float *coefx, float *coefy, int x, int y)
 		*coefy = 1;
 }
 
-void	ft_get_coef(s_new corda, s_new cordb, float *coefx, float *coefy)
+void	ft_get_coef(t_new corda, t_new cordb, float *coefx, float *coefy)
 {
 	int x;
 	int y;
 
-	x = ABS ((corda.x - cordb.x));
-	y = ABS ((corda.y - cordb.y));
+	x = ABS((corda.x - cordb.x));
+	y = ABS((corda.y - cordb.y));
 	change_coef(coefx, coefy, x, y);
 	if (cordb.x - corda.x < 0)
 		*coefx = -(*coefx);

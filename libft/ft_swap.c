@@ -6,13 +6,13 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 13:43:23 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/06 13:44:38 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/21 21:59:28 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_swap(int *a, int *b)
+void	ft_swap(int *a, int *b)
 {
 	int tmp_a;
 

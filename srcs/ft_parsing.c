@@ -6,7 +6,7 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 13:50:54 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/21 19:18:25 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/21 22:04:53 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,19 @@ void	ft_increment(int *j, int *i, int *l)
 	*l = 0;
 }
 
-int		**ft_parsing(char *str, s_pos *pos)
+int		**ft_parsing(char *str, t_pos *pos)
 {
 	int **tab;
 	int i;
 	int j;
 	int l;
 
-//	ft_initialize(&i, &j, &l);
-	i = 0;
-	j = 0;
-	l = 0;
+	ft_initialize(&i, &j, &l);
 	tab = (int**)malloc(sizeof(int*) * (pos->line + 1));
 	while (str[i])
 	{
 		tab[j] = (int*)malloc(sizeof(int) * (pos->nb));
-		while(str[i] && str[i] != '\n')
+		while (str[i] && str[i] != '\n')
 		{
 			if (ft_isdigit(str[i]) || str[i] == '-')
 			{
@@ -58,10 +55,7 @@ int		**ft_parsing(char *str, s_pos *pos)
 			}
 			i++;
 		}
-//		ft_increment(&j, &i, &l);
-		l = 0;
-		j++;
-		i++;
+		ft_increment(&j, &i, &l);
 	}
 	tab[j] = 0;
 	return (tab);

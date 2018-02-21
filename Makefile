@@ -18,7 +18,7 @@ LIB = $(addprefix $(LIB_PATH), $(LIB_NAME))
 
 NAME = fdf
 
-CFLAGS = -Wall -Werror -Wextra -g -I /usr/local/include
+CFLAGS = -Wall -Werror -Wextra -I /usr/local/include
 
 FLAGS = -L /usr/local/lib/ -lmlx -framework OpenGl -framework Appkit
 
@@ -26,7 +26,8 @@ INC = fdf.h
 
 SRCS_PATH = ./srcs
 
-ALL_SRCS = 	main.c key_hook.c ft_get_coef.c ft_checkgrid.c ft_take_doc.c ft_parsing.c ft_all.c ft_graph.c
+ALL_SRCS = 	main.c key_hook.c handlekc.c ft_get_coef.c ft_checkgrid.c \
+			ft_take_doc.c ft_parsing.c ft_all.c ft_graph.c ft_next.c
 
 SRCS = $(addprefix $(SRCS_PATH)/, $(ALL_SRCS))
 

@@ -6,7 +6,7 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 11:45:04 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/21 19:06:07 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/21 22:04:21 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ int		ft_countnb(char *str)
 	return (nb);
 }
 
-void	ft_all(char *str, s_check *numb, s_pos *pos)
+int		ft_all(char *str, t_check *numb, t_pos *pos)
 {
 	if (ft_checkgrid(str, numb, pos))
 	{
-		ft_putendl("iError with the map");
-		return ;
+		ft_putendl("Error with the map");
+		return (0);
 	}
-	pos->tab = ft_parsing(str, pos);
+	pos->tb = ft_parsing(str, pos);
 	ft_strdel(&str);
 	ft_graph(pos);
-	return ;
+	return (1);
 }

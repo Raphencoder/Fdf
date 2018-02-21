@@ -6,14 +6,13 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 13:33:49 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/21 19:25:17 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/21 22:03:31 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-
-void        fill_pixel(int x, int y, s_pos *pos)
+void	fill_pixel(int x, int y, t_pos *pos)
 {
 	int i;
 
@@ -26,7 +25,7 @@ void        fill_pixel(int x, int y, s_pos *pos)
 			pos->img_str[i + 1] = (char)58;
 			pos->img_str[i] = (char)223;
 		}
-		else 
+		else
 		{
 			pos->img_str[i + 2] = (char)255;
 			pos->img_str[i + 1] = (char)255;
@@ -35,9 +34,9 @@ void        fill_pixel(int x, int y, s_pos *pos)
 	}
 }
 
-s_new	ft_convert(int x, int y, int z, s_pos *pos)
+t_new	ft_convert(int x, int y, int z, t_pos *pos)
 {
-	s_new new;
+	t_new new;
 
 	x *= pos->rotatex;
 	y *= pos->rotatey;
@@ -49,7 +48,7 @@ s_new	ft_convert(int x, int y, int z, s_pos *pos)
 	return (new);
 }
 
-void	ft_put_line(s_new corda, s_new cordb, s_pos *pos)
+void	ft_put_line(t_new corda, t_new cordb, t_pos *pos)
 {
 	float	coefx;
 	float	coefy;
@@ -64,7 +63,7 @@ void	ft_put_line(s_new corda, s_new cordb, s_pos *pos)
 			corda.y += coefy;
 		}
 	}
-	else 
+	else
 	{
 		while (cordb.x != corda.x)
 		{
@@ -75,9 +74,33 @@ void	ft_put_line(s_new corda, s_new cordb, s_pos *pos)
 	}
 }
 
-int	ft_graph(s_pos *pos)
+void	ft_colorandline(int i, int *j, t_pos *pos, t_new cord)
 {
-	s_new	cord;
+	if (*j > 0)
+	{
+		if (pos->tb[i][*j] && !pos->tb[i][*j - 1])
+			pos->z = 0;
+		ft_put_line(cord, ft_convert(*j - 1, i, pos->tb[i][*j - 1], pos), pos);
+	}
+	if (i > 0 && *j > 0)
+	{
+		if (pos->tb[i][*j] && (pos->tb[i - 1][*j] || pos->tb[i][*j - 1]))
+			pos->z = 1;
+		else
+			pos->z = 0;
+	}
+	if (i > 0)
+	{
+		if (pos->tb[i][*j] && !pos->tb[i - 1][*j])
+			pos->z = 0;
+		ft_put_line(cord, ft_convert(*j, i - 1, pos->tb[i - 1][*j], pos), pos);
+	}
+	*j = *j + 1;
+}
+
+int		ft_graph(t_pos *pos)
+{
+	t_new	cord;
 	int		i;
 	int		j;
 
@@ -86,35 +109,16 @@ int	ft_graph(s_pos *pos)
 	while (i < pos->line)
 	{
 		while (j < pos->nb)
-		{	
+		{
 			if (i > 0 && j > 0)
 			{
-				if (pos->tab[i][j] && (pos->tab[i - 1][j] || pos->tab[i][j - 1]))
+				if (pos->tb[i][j] && (pos->tb[i - 1][j] || pos->tb[i][j - 1]))
 					pos->z = 1;
 				else
 					pos->z = 0;
 			}
-			cord = ft_convert(j, i, pos->tab[i][j], pos);
-			if (j > 0)
-			{
-				if (pos->tab[i][j] && !pos->tab[i][j -1])
-					pos->z = 0;
-				ft_put_line(cord, ft_convert(j - 1, i, pos->tab[i][j - 1], pos), pos);
-			}
-			if (i > 0 && j > 0)
-			{
-				if (pos->tab[i][j] && (pos->tab[i - 1][j] || pos->tab[i][j -1]))
-					pos->z = 1;
-				else
-					pos->z = 0;
-			}
-			if (i > 0)
-			{
-				if(pos->tab[i][j] && !pos->tab[i - 1][j])
-					pos->z = 0;
-				ft_put_line(cord, ft_convert(j, i - 1, pos->tab[i - 1][j], pos), pos);
-			}
-			j++;
+			cord = ft_convert(j, i, pos->tb[i][j], pos);
+			ft_colorandline(i, &j, pos, cord);
 		}
 		i++;
 		j = 0;
