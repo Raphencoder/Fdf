@@ -6,7 +6,7 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 13:08:09 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/21 22:07:28 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/21 23:28:56 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int		ft_checkgrid(char *str, t_check *numb, t_pos *pos)
 	int error;
 
 	error = 0;
+	if (!str)
+		return (1);;
 	error = ft_isnumb(str);
 	error = error + ft_samecol(str, numb, pos);
 	error = error + pos->line - numb->fline;
