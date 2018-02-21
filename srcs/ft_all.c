@@ -6,13 +6,13 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 11:45:04 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/20 17:07:21 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/21 19:06:07 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-int     ft_countnb(char *str)
+int		ft_countnb(char *str)
 {
 	int i;
 	int nb;
@@ -33,9 +33,8 @@ int     ft_countnb(char *str)
 	return (nb);
 }
 
-void    ft_all(char *str, s_check *numb, s_pos *pos)
+void	ft_all(char *str, s_check *numb, s_pos *pos)
 {
-
 	if (ft_checkgrid(str, numb, pos))
 	{
 		ft_putendl("iError with the map");

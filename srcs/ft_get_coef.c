@@ -6,13 +6,13 @@
 /*   By: Raphael <raphaelkriefbm@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 11:10:42 by Raphael           #+#    #+#             */
-/*   Updated: 2018/02/20 14:25:45 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/21 19:17:27 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-void  change_coef(float *coefx, float *coefy, int x, int y)
+void	change_coef(float *coefx, float *coefy, int x, int y)
 {
 	if (x == 0)
 	{
@@ -35,7 +35,7 @@ void  change_coef(float *coefx, float *coefy, int x, int y)
 		*coefy = 1;
 }
 
-void ft_get_coef(s_new corda, s_new cordb, float *coefx, float *coefy)
+void	ft_get_coef(s_new corda, s_new cordb, float *coefx, float *coefy)
 {
 	int x;
 	int y;
@@ -45,6 +45,6 @@ void ft_get_coef(s_new corda, s_new cordb, float *coefx, float *coefy)
 	change_coef(coefx, coefy, x, y);
 	if (cordb.x - corda.x < 0)
 		*coefx = -(*coefx);
-	if (cordb.y - corda.y < 0)	
+	if (cordb.y - corda.y < 0)
 		*coefy = -(*coefy);
 }

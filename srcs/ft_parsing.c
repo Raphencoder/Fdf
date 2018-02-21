@@ -6,7 +6,7 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 13:50:54 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/19 17:44:48 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/21 19:18:25 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,20 @@ void	ft_movedigit(char *str, int *i)
 	*i = *i - 1;
 }
 
+void	ft_initialize(int *i, int *j, int *l)
+{
+	*i = 0;
+	*j = 0;
+	*l = 0;
+}
+
+void	ft_increment(int *j, int *i, int *l)
+{
+	*j = *j + 1;
+	*i = *i + 1;
+	*l = 0;
+}
+
 int		**ft_parsing(char *str, s_pos *pos)
 {
 	int **tab;
@@ -26,9 +40,10 @@ int		**ft_parsing(char *str, s_pos *pos)
 	int j;
 	int l;
 
+//	ft_initialize(&i, &j, &l);
 	i = 0;
-	l = 0;
 	j = 0;
+	l = 0;
 	tab = (int**)malloc(sizeof(int*) * (pos->line + 1));
 	while (str[i])
 	{
@@ -43,6 +58,7 @@ int		**ft_parsing(char *str, s_pos *pos)
 			}
 			i++;
 		}
+//		ft_increment(&j, &i, &l);
 		l = 0;
 		j++;
 		i++;

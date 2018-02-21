@@ -6,12 +6,12 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 13:33:49 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/20 14:38:40 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/21 19:25:17 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
-#include <stdio.h>
+
 
 void        fill_pixel(int x, int y, s_pos *pos)
 {
@@ -20,9 +20,18 @@ void        fill_pixel(int x, int y, s_pos *pos)
 	i = (x * 4) + (y * pos->s_l);
 	if (x < pos->s_l / 4 && y < 2000 && x >= 0 && y >= 0)
 	{
-		pos->img_str[i + 2] = (char)255;
-		pos->img_str[i + 1] = (char)255;
-		pos->img_str[i] = (char)255;
+		if (pos->z)
+		{
+			pos->img_str[i + 2] = (char)58;
+			pos->img_str[i + 1] = (char)58;
+			pos->img_str[i] = (char)223;
+		}
+		else 
+		{
+			pos->img_str[i + 2] = (char)255;
+			pos->img_str[i + 1] = (char)255;
+			pos->img_str[i] = (char)255;
+		}
 	}
 }
 
@@ -78,11 +87,33 @@ int	ft_graph(s_pos *pos)
 	{
 		while (j < pos->nb)
 		{	
+			if (i > 0 && j > 0)
+			{
+				if (pos->tab[i][j] && (pos->tab[i - 1][j] || pos->tab[i][j - 1]))
+					pos->z = 1;
+				else
+					pos->z = 0;
+			}
 			cord = ft_convert(j, i, pos->tab[i][j], pos);
 			if (j > 0)
+			{
+				if (pos->tab[i][j] && !pos->tab[i][j -1])
+					pos->z = 0;
 				ft_put_line(cord, ft_convert(j - 1, i, pos->tab[i][j - 1], pos), pos);
+			}
+			if (i > 0 && j > 0)
+			{
+				if (pos->tab[i][j] && (pos->tab[i - 1][j] || pos->tab[i][j -1]))
+					pos->z = 1;
+				else
+					pos->z = 0;
+			}
 			if (i > 0)
+			{
+				if(pos->tab[i][j] && !pos->tab[i - 1][j])
+					pos->z = 0;
 				ft_put_line(cord, ft_convert(j, i - 1, pos->tab[i - 1][j], pos), pos);
+			}
 			j++;
 		}
 		i++;

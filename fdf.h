@@ -6,7 +6,7 @@
 /*   By: rkrief <rkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 16:10:34 by rkrief            #+#    #+#             */
-/*   Updated: 2018/02/20 14:32:07 by rkrief           ###   ########.fr       */
+/*   Updated: 2018/02/21 14:07:07 by rkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct	t_pos
 {
 	int			x;
 	float		h;
+	int			z;
 	int			movex;
 	int			movey;
 	float		rotatex;
